@@ -131,21 +131,16 @@ var projects = {
 /*_______________________________________________________________________________________________________________ */
 
 var ph = "%data%";
+// name, and role
+var formattedHeaderRole = HTMLheaderRole.replace(ph, bio.role);
+$("#header").prepend(formattedHeaderRole);
 
 var formattedHeaderName = HTMLheaderName.replace(ph, bio.name);
-$("#header").append(formattedHeaderName);
+$("#header").prepend(formattedHeaderName);
 
-var formattedHeaderRole = HTMLheaderRole.replace(ph, bio.role);
-$("#header").append(formattedHeaderRole);
-
-/* It should appear in the end of the wepbage
-var formattedContactGeneric = HTMLcontactGeneric.replace("%contact%", "");
-$("#header").append(formattedContactGeneric);
-*/
-
-// why the bunch of stuff does not apprear in the webpage..
+// header contact and footer contacts.
 var formattedMobile = HTMLmobile.replace(ph, bio["contacts"].mobile);
-var formattedEmail = HTMLemail.relace(ph, bio["contacts"].email);
+var formattedEmail = HTMLemail.replace(ph, bio["contacts"].email);
 var formattedGithub = HTMLgithub.replace(ph, bio["contacts"].github);
 var formattedTwitter = HTMLtwitter.replace(ph, bio["contacts"].twitter);
 var formattedLocaiton = HTMLlocation.replace(ph, bio["contacts"].location);
@@ -153,7 +148,10 @@ var formattedLocaiton = HTMLlocation.replace(ph, bio["contacts"].location);
 var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocaiton];
 
 for (var contact in formattedContactArray) {
-    $("#header").append(contact);
+    $("#topContacts").append(formattedContactArray[contact]);
+    $("#footerContacts").append(formattedContactArray[contact]);
 };
 
-$("#header").append(formattedMobile);
+// bio pic
+var formattedBioPic = $(HTMLbioPic).attr("src", "images/lts.jpg");
+$("#header").append(formattedBioPic);

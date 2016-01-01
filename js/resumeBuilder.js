@@ -7,8 +7,7 @@ This is empty on purpose! Your code to build the resume will go here.
 // display function:
 
 var displayFunction = function(){
-    
-    // to do here.
+    console.log(this);
 };
 
 // bio
@@ -129,3 +128,32 @@ var projects = {
      display: displayFunction()
     
 };
+/*_______________________________________________________________________________________________________________ */
+
+var ph = "%data%";
+
+var formattedHeaderName = HTMLheaderName.replace(ph, bio.name);
+$("#header").append(formattedHeaderName);
+
+var formattedHeaderRole = HTMLheaderRole.replace(ph, bio.role);
+$("#header").append(formattedHeaderRole);
+
+/* It should appear in the end of the wepbage
+var formattedContactGeneric = HTMLcontactGeneric.replace("%contact%", "");
+$("#header").append(formattedContactGeneric);
+*/
+
+// why the bunch of stuff does not apprear in the webpage..
+var formattedMobile = HTMLmobile.replace(ph, bio["contacts"].mobile);
+var formattedEmail = HTMLemail.relace(ph, bio["contacts"].email);
+var formattedGithub = HTMLgithub.replace(ph, bio["contacts"].github);
+var formattedTwitter = HTMLtwitter.replace(ph, bio["contacts"].twitter);
+var formattedLocaiton = HTMLlocation.replace(ph, bio["contacts"].location);
+
+var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocaiton];
+
+for (var contact in formattedContactArray) {
+    $("#header").append(contact);
+};
+
+$("#header").append(formattedMobile);

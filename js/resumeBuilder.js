@@ -24,7 +24,7 @@ var bio = {
           twitter: "@Alex_Li",
           location: "Frederriskberg Copenhagen Denmark"
     },
-    welcomeMessage: "Hello World.",
+    welcomeMessage: "Hello, welcome to see my resume!",
     skills: ["Office softwares", "Accounting", "Data analysis", "SQL", "Python"],
     biopic: "images/lts.jpeg",
     display:  displayFunction()
@@ -155,3 +155,14 @@ for (var contact in formattedContactArray) {
 // bio pic
 var formattedBioPic = $(HTMLbioPic).attr("src", "images/lts.jpg");
 $("#header").append(formattedBioPic);
+
+
+// welcome msg
+var formattedWelcomeMsg = HTMLwelcomeMsg.replace(ph, bio.welcomeMessage);
+$("#header").append(formattedWelcomeMsg);
+// skills
+$("#header").append(HTMLskillsStart);
+
+for (var skill in bio.skills) {
+    $("#header").append(HTMLskills.replace(ph, bio.skills[skill]));
+};

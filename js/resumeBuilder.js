@@ -121,14 +121,15 @@ var education = {
                 
                 var formattedName = HTMLschoolName.replace(ph, formattedSchool.name);
                 var formattedDegree = HTMLschoolDegree.replace(ph, formattedSchool.degree);
-                $(formattedName).attr("href", formattedSchool.url) 
+                var formattedNameAndDegree = formattedName.concat(formattedDegree);
+                formattedNameAndDegree = $(formattedNameAndDegree).attr("href", formattedSchool.url) 
                 // change the default link to customized one. 
                 var formattedLocation = HTMLschoolLocation.replace(ph, formattedSchool.location);
                 var formatteddates = HTMLschoolDates.replace(ph, formattedSchool.dates);
                 
                 
                 $("#education").append(HTMLschoolStart);
-                $(".education-entry:last").append(formattedName + formattedDegree);
+                $(".education-entry:last").append(formattedNameAndDegree);
                 $(".education-entry:last").append(formatteddates);
                 $(".education-entry:last").append(formattedLocation);
                 
@@ -145,13 +146,15 @@ var education = {
                     var formattedOnlineCourse = education.onlineCourses[course];
                     var formattedCourseTitle = HTMLonlineTitle.replace(ph, formattedOnlineCourse.title);
                     var formattedCourseSchool = HTMLonlineSchool.replace(ph, formattedOnlineCourse.school);
+                    var formattedTitleAndSchool = formattedCourseTitle.concat(formattedCourseSchool);
                     
                     var formattedCourseDates = HTMLonlineDates.replace(ph, formattedOnlineCourse.date);
                     var formattedCourseURL = HTMLonlineURL.replace(ph, formattedOnlineCourse.url);
                     
-                    $(formattedCourseURL).attr("a.href", formattedOnlineCourse.url);
-                    
-                    $(".education-entry:last").append(formattedCourseTitle + formattedCourseSchool);
+                    formattedCourseURL= $(formattedCourseURL).attr("href", formattedOnlineCourse.url);
+                    formattedTitleAndSchool  = $(formattedTitleAndSchool).attr("href", formattedOnlineCourse.url);
+                    // neat!
+                    $(".education-entry:last").append(formattedTitleAndSchool);
                     $(".education-entry:last").append(formattedCourseDates);
                     $(".education-entry:last").append(formattedCourseURL);
                 }

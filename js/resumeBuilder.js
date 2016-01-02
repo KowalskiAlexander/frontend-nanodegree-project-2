@@ -4,12 +4,6 @@ This is empty on purpose! Your code to build the resume will go here.
 
 // create and customize the bio, eduaction and work objects:
 
-// display function:
-
-var displayFunction = function(){
-    console.log(this);
-};
-
 // bio
 
 var bio = {
@@ -27,7 +21,48 @@ var bio = {
     welcomeMessage: "Hello, welcome to see my resume!",
     skills: ["Office softwares", "Accounting", "Data analysis", "SQL", "Python"],
     biopic: "images/lts.jpeg",
-    display:  displayFunction()
+    
+    display:  function() {
+            // name, and role
+            var formattedHeaderRole = HTMLheaderRole.replace(ph, bio.role);
+            $("#header").prepend(formattedHeaderRole);
+
+            var formattedHeaderName = HTMLheaderName.replace(ph, bio.name);
+            $("#header").prepend(formattedHeaderName);
+
+            // header contact and footer contacts.
+            var formattedMobile = HTMLmobile.replace(ph, bio["contacts"].mobile);
+            var formattedEmail = HTMLemail.replace(ph, bio["contacts"].email);
+            var formattedGithub = HTMLgithub.replace(ph, bio["contacts"].github);
+            var formattedTwitter = HTMLtwitter.replace(ph, bio["contacts"].twitter);
+            var formattedLocation = HTMLlocation.replace(ph, bio["contacts"].location);
+
+            var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation];
+
+            for (var contact in formattedContactArray) {
+                $("#topContacts").append(formattedContactArray[contact]);
+                $("#footerContacts").append(formattedContactArray[contact]);
+            };
+
+            // bio pic
+            var formattedBioPic = $(HTMLbioPic).attr("src", "images/lts.jpg");
+            $("#header").append(formattedBioPic);
+
+
+            // welcome msg
+            var formattedWelcomeMsg = HTMLwelcomeMsg.replace(ph, bio.welcomeMessage);
+            $("#header").append(formattedWelcomeMsg);
+
+
+            // skills
+            $("#header").append(HTMLskillsStart);
+
+            for (var skill in bio.skills) {
+                $("#header").append(HTMLskills.replace(ph, bio.skills[skill]));
+            };
+        
+        }
+    
 };
 
 
@@ -103,7 +138,26 @@ var work = {
           descriptions: "The library helper for school library."
       }
   ],
-  display: displayFunction()
+  display: function() {
+      for (var job in work.jobs) {
+            var formattedWork = work.jobs[job];
+            $("#workExperience").append(HTMLworkStart);
+            var formattedEmployer = HTMLworkEmployer.replace(ph, formattedWork.employer);
+            var formattedTitle = HTMLworkTitle.replace(ph, formattedWork.title);
+            
+            $(".work-entry:last").append(formattedEmployer + formattedTitle);
+            
+            var formattedLocation = HTMLworkLocation.replace(ph, formattedWork.location);
+            var formatteddates = HTMLworkDates.replace(ph, formattedWork.dates);
+            
+            $(".work-entry:last").append(formatteddates);
+            $(".work-entry:last").append(formattedLocation);
+            
+            var formattedDescriptions = HTMLworkDescription.replace(ph, formattedWork.descriptions);
+            
+            $(".work-entry:last").append(formattedDescriptions);
+            };
+      }
 };
 
 // prjects
@@ -131,66 +185,11 @@ var projects = {
 /*_______________________________________________________________________________________________________________ */
 
 var ph = "%data%";
-// name, and role
-var formattedHeaderRole = HTMLheaderRole.replace(ph, bio.role);
-$("#header").prepend(formattedHeaderRole);
-
-var formattedHeaderName = HTMLheaderName.replace(ph, bio.name);
-$("#header").prepend(formattedHeaderName);
-
-// header contact and footer contacts.
-var formattedMobile = HTMLmobile.replace(ph, bio["contacts"].mobile);
-var formattedEmail = HTMLemail.replace(ph, bio["contacts"].email);
-var formattedGithub = HTMLgithub.replace(ph, bio["contacts"].github);
-var formattedTwitter = HTMLtwitter.replace(ph, bio["contacts"].twitter);
-var formattedLocaiton = HTMLlocation.replace(ph, bio["contacts"].location);
-
-var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation];
-
-for (var contact in formattedContactArray) {
-    $("#topContacts").append(formattedContactArray[contact]);
-    $("#footerContacts").append(formattedContactArray[contact]);
-};
-
-// bio pic
-var formattedBioPic = $(HTMLbioPic).attr("src", "images/lts.jpg");
-$("#header").append(formattedBioPic);
-
-
-// welcome msg
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace(ph, bio.welcomeMessage);
-$("#header").append(formattedWelcomeMsg);
-
-
-// skills
-$("#header").append(HTMLskillsStart);
-
-for (var skill in bio.skills) {
-    $("#header").append(HTMLskills.replace(ph, bio.skills[skill]));
-};
+//bio
+bio.display();
 
 // work 
-// to do 
+work.display();
 
-
-for (var job in work.jobs) {
-  var formattedWork = work.jobs[job];
-  $("#workExperience").append(HTMLworkStart);
-  var formattedEmployer = HTMLworkEmployer.replace(ph, formattedWork.employer);
-  var formattedTitle = HTMLworkTitle.replace(ph, formattedWork.title);
-  
-  $(".work-entry:last").append(formattedEmployer + formattedTitle);
-  
-  var formattedLocation = HTMLworkLocation.replace(ph, formattedWork.location);
-  var formatteddates = HTMLworkDates.replace(ph, formattedWork.dates);
-  
-  $(".work-entry:last").append(formatteddates);
-  $(".work-entry:last").append(formattedLocation);
-  
-  var formattedDescriptions = HTMLworkDescription.replace(ph, formattedWork.descriptions);
-  
-  $(".work-entry:last").append(formattedDescriptions);
-};
-
-
+// Projects
 

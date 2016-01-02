@@ -145,7 +145,7 @@ var formattedGithub = HTMLgithub.replace(ph, bio["contacts"].github);
 var formattedTwitter = HTMLtwitter.replace(ph, bio["contacts"].twitter);
 var formattedLocaiton = HTMLlocation.replace(ph, bio["contacts"].location);
 
-var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocaiton];
+var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation];
 
 for (var contact in formattedContactArray) {
     $("#topContacts").append(formattedContactArray[contact]);
@@ -160,9 +160,37 @@ $("#header").append(formattedBioPic);
 // welcome msg
 var formattedWelcomeMsg = HTMLwelcomeMsg.replace(ph, bio.welcomeMessage);
 $("#header").append(formattedWelcomeMsg);
+
+
 // skills
 $("#header").append(HTMLskillsStart);
 
 for (var skill in bio.skills) {
     $("#header").append(HTMLskills.replace(ph, bio.skills[skill]));
 };
+
+// work 
+// to do 
+
+
+for (var job in work.jobs) {
+  var formattedWork = work.jobs[job];
+  $("#workExperience").append(HTMLworkStart);
+  var formattedEmployer = HTMLworkEmployer.replace(ph, formattedWork.employer);
+  var formattedTitle = HTMLworkTitle.replace(ph, formattedWork.title);
+  
+  $(".work-entry:last").append(formattedEmployer + formattedTitle);
+  
+  var formattedLocation = HTMLworkLocation.replace(ph, formattedWork.location);
+  var formatteddates = HTMLworkDates.replace(ph, formattedWork.dates);
+  
+  $(".work-entry:last").append(formatteddates);
+  $(".work-entry:last").append(formattedLocation);
+  
+  var formattedDescriptions = HTMLworkDescription.replace(ph, formattedWork.descriptions);
+  
+  $(".work-entry:last").append(formattedDescriptions);
+};
+
+
+

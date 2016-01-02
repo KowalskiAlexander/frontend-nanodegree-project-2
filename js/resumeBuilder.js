@@ -92,7 +92,7 @@ cbs = {
 var iipp, icsp, dpup;
 
 iipp = {
-    title: "Introduction to Interactive Python Programming ",
+    title: "Introduction to Interactive Python Programming",
     school: "Rice University",
     date: 2015,
     url: "https://www.coursera.org/course/interactivepython1"
@@ -112,10 +112,52 @@ dpup = {
     url: "https://www.coursera.org/learn/hipython"
 };
 // eudcation 
-var eduaction = {
+var education = {
     schools: [unnc, cbs], 
     onlineCourses: [iipp, icsp, dpup],
-    display: displayFunction()
+    display: function() {
+            for (var school in education.schools) {
+                var formattedSchool = education.schools[school];
+                
+                var formattedName = HTMLschoolName.replace(ph, formattedSchool.name);
+                var formattedDegree = HTMLschoolDegree.replace(ph, formattedSchool.degree);
+                $(formattedName).attr("href", formattedSchool.url) 
+                // change the default link to customized one. 
+                var formattedLocation = HTMLschoolLocation.replace(ph, formattedSchool.location);
+                var formatteddates = HTMLschoolDates.replace(ph, formattedSchool.dates);
+                
+                
+                $("#education").append(HTMLschoolStart);
+                $(".education-entry:last").append(formattedName + formattedDegree);
+                $(".education-entry:last").append(formatteddates);
+                $(".education-entry:last").append(formattedLocation);
+                
+                for (var i in formattedSchool.majors) {
+                var formattedMajor = HTMLschoolMajor.replace(ph, formattedSchool.majors[i]);
+                $(".education-entry:last").append(formattedMajor);
+               }
+            
+           };
+            if (education.onlineCourses.length != 0) {
+                $(".education-entry:last").append(HTMLonlineClasses);
+              
+                for (var course in education.onlineCourses) {
+                    var formattedOnlineCourse = education.onlineCourses[course];
+                    var formattedCourseTitle = HTMLonlineTitle.replace(ph, formattedOnlineCourse.title);
+                    var formattedCourseSchool = HTMLonlineSchool.replace(ph, formattedOnlineCourse.school);
+                    
+                    var formattedCourseDates = HTMLonlineDates.replace(ph, formattedOnlineCourse.date);
+                    var formattedCourseURL = HTMLonlineURL.replace(ph, formattedOnlineCourse.url);
+                    
+                    $(formattedCourseURL).attr("a.href", formattedOnlineCourse.url);
+                    
+                    $(".education-entry:last").append(formattedCourseTitle + formattedCourseSchool);
+                    $(".education-entry:last").append(formattedCourseDates);
+                    $(".education-entry:last").append(formattedCourseURL);
+                }
+                
+           };
+      }
 };
 
 // work
@@ -156,14 +198,14 @@ var work = {
             var formattedDescriptions = HTMLworkDescription.replace(ph, formattedWork.descriptions);
             
             $(".work-entry:last").append(formattedDescriptions);
-            };
-      }
+      };
+   }
 };
 
-// prjects
+// project
 
 var projects = {
-    prjects: [
+    project: [
         {
             title: "Proejct Kowalski",
             dates: "2015 - 2016",
@@ -179,8 +221,26 @@ var projects = {
         }    
     ],
     
-     display: displayFunction()
-    
+    display: function() {
+        for (var project in projects.project) {
+            var formattedProject = projects.project[project];
+            $("#projects").append(HTMLprojectStart);
+            var formattedTitle = HTMLprojectTitle.replace(ph, formattedProject.title);
+            var formattedDate = HTMLprojectDates.replace(ph, formattedProject.dates);
+            var formattedDescriptions = HTMLprojectDescription.replace(ph, formattedProject.descriptions);
+            
+            
+            $(".project-entry:last").append(formattedTitle);
+            $(".project-entry:last").append(formattedDate);
+            $(".project-entry:last").append(formattedDescriptions);
+            
+            for (var img in formattedProject.images) {
+                var formattedImage = $(HTMLprojectImage).attr("src", formattedProject.images[img]);
+                $(".project-entry:last").append(formattedImage);
+           }
+        
+        }
+    }
 };
 /*_______________________________________________________________________________________________________________ */
 
@@ -192,4 +252,11 @@ bio.display();
 work.display();
 
 // Projects
+// remember to change encapulate in the function:
+
+projects.display();
+
+
+// eduacation
+education.display();
 

@@ -42,7 +42,8 @@ var bio = {
             var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation];
 
             for (var contact in formattedContactArray) {
-                $("#topContacts", "#footerContacts").append(formattedContactArray[contact]);
+                $("#topContacts").append(formattedContactArray[contact]);
+                $("#footerContacts").append(formattedContactArray[contact]);
             };
 
             // bio pic
@@ -57,10 +58,12 @@ var bio = {
 
             // skills
             $("#header").append(HTMLskillsStart);
-
+            
+            
             for (var i = 0; i< bio.skills.length; i++) {
                 $("#header").append(HTMLskills.replace(ph, bio.skills[i]));
             };
+            // can you write the for-each edition for me ? I cannot figure out....
         }
     
 };
@@ -197,23 +200,23 @@ var work = {
 // project
 
 var projects = {
-    project: [
+    "project": [
         {
-            title: "Proejct Kowalski",
-            dates: "2015 - 2016",
-            descriptions: "It is a fake project..",
-            images: ["http://xiaoji-chen.com/blog/wp-content/uploads/2012/10/tree.png", "http://xiaoji-chen.com/blog/wp-content/uploads/2012/10/part.png"] 
+            "title": "Proejct Kowalski",
+            "dates": "2015 - 2016",
+            "descriptions": "It is a fake project..",
+            "images": ["http://xiaoji-chen.com/blog/wp-content/uploads/2012/10/tree.png", "http://xiaoji-chen.com/blog/wp-content/uploads/2012/10/part.png"] 
         },
         
         {
-            title: "Project Alexnander",
-            dates: "2015 - 2016",
-            descriptions: "Again, it is fake..I don't have any projects.",
-            images: ["http://xiaoji-chen.com/blog/wp-content/uploads/2011/07/01.jpg", "http://xiaoji-chen.com/blog/wp-content/uploads/2011/07/07.jpg"]
+            "title": "Project Alexnander",
+            "dates": "2015 - 2016",
+            "descriptions": "Again, it is fake..I don't have any projects.",
+            "images": ["http://xiaoji-chen.com/blog/wp-content/uploads/2011/07/01.jpg", "http://xiaoji-chen.com/blog/wp-content/uploads/2011/07/07.jpg"]
         }    
     ],
     
-    display: function() {
+    "display": function() {
         for (var project in projects.project) {
             var formattedProject = projects.project[project];
             $("#projects").append(HTMLprojectStart);

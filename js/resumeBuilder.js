@@ -159,24 +159,24 @@ var education = {
 // work
 
 var work = {
-  jobs: [
+  "jobs": [
       {
-        employer: "Pactera",
-        title: "Assistant",
-        location: "Jining China",   
-        dates: "2015 Jun. - 2015 Aug.",
-        descriptions: "The assistant for IT outsourcing consultant."
+        "employer": "Pactera",
+        "title": "Assistant",
+        "location": "Jining China",   
+        "dates": "2015 Jun. - 2015 Aug.",
+        "descriptions": "The assistant for IT outsourcing consultant."
       },
       
       {
-          employer: "UNNC",
-          title: "Library Helper",
-          location: "Ningbo China",
-          dates: "2014 Sep. - 2015 Jan",
-          descriptions: "The library helper for school library."
+          "employer": "UNNC",
+          "title": "Library Helper",
+          "location": "Ningbo China",
+          "dates": "2014 Sep. - 2015 Jan",
+          "descriptions": "The library helper for school library."
       }
   ],
-  display: function() {
+  "display": function() {
       for (var job in work.jobs) {
             var formattedWork = work.jobs[job];
             $("#workExperience").append(HTMLworkStart);
@@ -187,13 +187,9 @@ var work = {
             
             var formattedLocation = HTMLworkLocation.replace(ph, formattedWork.location);
             var formatteddates = HTMLworkDates.replace(ph, formattedWork.dates);
-            
-            $(".work-entry:last").append(formatteddates);
-            $(".work-entry:last").append(formattedLocation);
-            
             var formattedDescriptions = HTMLworkDescription.replace(ph, formattedWork.descriptions);
             
-            $(".work-entry:last").append(formattedDescriptions);
+            $(".work-entry:last").append(formatteddates,formattedLocation, formattedDescriptions);            
       };
    }
 };

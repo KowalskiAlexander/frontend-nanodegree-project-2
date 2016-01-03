@@ -255,11 +255,15 @@ bio.display();
 work.display();
 
 // Projects
-// remember to change encapulate in the function:
 
 projects.display();
 
 
 // eduacation
 education.display();
+
+// ok, let's do the map!
+
+$("#mapDiv").append(googleMap);
+// append the map div to the DOM.
 

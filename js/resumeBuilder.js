@@ -2,27 +2,29 @@
 This is empty on purpose! Your code to build the resume will go here.
  */
 
+'use strict';
+// use strict mode to run the code.
 // create and customize the bio, eduaction and work objects:
 
 // bio
 
 var bio = {
-    name : "Tianshu Li",
+    "name" : "Tianshu Li",
 
-    role : "Data Operation",
+    "role" : "Data Operation",
 
-    contacts : {
-          mobile: "+45 50188991",
-          email: "tsli.alex@gmail.com",
-          github: "@KowalskiAlexander",
-          twitter: "@Alex_Li",
-          location: "Frederriskberg Copenhagen Denmark"
+    "contacts" : {
+          "mobile": "+45 50188991",
+          "email": "tsli.alex@gmail.com",
+          "github": "@KowalskiAlexander",
+          "twitter": "@Alex_Li",
+          "location": "Frederriskberg Copenhagen Denmark"
     },
-    welcomeMessage: "Hello, welcome to see my resume!",
-    skills: ["Office softwares", "Accounting", "Data analysis", "SQL", "Python"],
-    biopic: "images/lts.jpeg",
+    "welcomeMessage": "Hello, welcome to see my resume!",
+    "skills": ["Office softwares", "Accounting", "Data analysis", "SQL", "Python"],
+    "biopic": "images/lts.jpeg",
     
-    display:  function() {
+    "display":  function() {
             // name, and role
             var formattedHeaderRole = HTMLheaderRole.replace(ph, bio.role);
             $("#header").prepend(formattedHeaderRole);
@@ -31,17 +33,16 @@ var bio = {
             $("#header").prepend(formattedHeaderName);
 
             // header contact and footer contacts.
-            var formattedMobile = HTMLmobile.replace(ph, bio["contacts"].mobile);
-            var formattedEmail = HTMLemail.replace(ph, bio["contacts"].email);
-            var formattedGithub = HTMLgithub.replace(ph, bio["contacts"].github);
-            var formattedTwitter = HTMLtwitter.replace(ph, bio["contacts"].twitter);
-            var formattedLocation = HTMLlocation.replace(ph, bio["contacts"].location);
+            var formattedMobile = HTMLmobile.replace(ph, bio.contacts.mobile);
+            var formattedEmail = HTMLemail.replace(ph, bio.contacts.email);
+            var formattedGithub = HTMLgithub.replace(ph, bio.contacts.github);
+            var formattedTwitter = HTMLtwitter.replace(ph, bio.contacts.twitter);
+            var formattedLocation = HTMLlocation.replace(ph, bio.contacts.location);
 
             var formattedContactArray = [formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation];
 
             for (var contact in formattedContactArray) {
-                $("#topContacts").append(formattedContactArray[contact]);
-                $("#footerContacts").append(formattedContactArray[contact]);
+                $("#topContacts", "#footerContacts").append(formattedContactArray[contact]);
             };
 
             // bio pic
@@ -57,65 +58,61 @@ var bio = {
             // skills
             $("#header").append(HTMLskillsStart);
 
-            for (var skill in bio.skills) {
-                $("#header").append(HTMLskills.replace(ph, bio.skills[skill]));
+            for (var i = 0; i< bio.skills.length; i++) {
+                $("#header").append(HTMLskills.replace(ph, bio.skills[i]));
             };
-        
         }
     
 };
 
 
 // education
-// delcare the school obejcts
-var unnc, cbs;
 
-unnc = {
-    name: "University of Nottingham Ningbo China",
-    location: "Ningbo China",
-    degree: "BA",
-    majors: ["Finance Accounting and Management"],
-    dates: 2017,
-    url: "http://www.nottingham.edu.cn/"
-};
-
-cbs = {
-    name: "Copenhagen Business School",
-    location: "Copenhagen Denmark",
-    degree: "BA",
-    majors: ["Finance Accounting and management"],
-    dates: 2016,
-    url: "http://www.cbs.dk/"
-};
-
-// decalre the online courses
-var iipp, icsp, dpup;
-
-iipp = {
-    title: "Introduction to Interactive Python Programming",
-    school: "Rice University",
-    date: 2015,
-    url: "https://www.coursera.org/course/interactivepython1"
-};
-
-icsp = {
-    title: "Introduction Computer Science and Programming in Python",
-    school: "Massachusetts Institute of Technology",
-    date: 2015,
-    url: "https://courses.edx.org/courses/MITx/6.00.1x_5/1T2015/info"  
-};
-
-dpup = {
-    title: "Data Processing Using Python",
-    school: "Nanjing University",
-    date: 2016, 
-    url: "https://www.coursera.org/learn/hipython"
-};
-// eudcation 
 var education = {
-    schools: [unnc, cbs], 
-    onlineCourses: [iipp, icsp, dpup],
-    display: function() {
+    "schools": [
+        {
+        "name": "University of Nottingham Ningbo China",
+        "location": "Ningbo China",
+        "degree": "BA",
+        "majors": ["Finance Accounting and Management"],
+        "dates": 2017,
+        "url": "http://www.nottingham.edu.cn/"
+        },
+        
+        {
+        "name": "Copenhagen Business School",
+        "location": "Copenhagen Denmark",
+        "degree": "BA",
+        "majors": ["Finance Accounting and management"],
+        "dates": 2016,
+        "url": "http://www.cbs.dk/"
+        } 
+    ], 
+    
+    "onlineCourses": [
+        {
+            "title": "Introduction to Interactive Python Programming",
+            "school": "Rice University",
+            "date": 2015,
+            "url": "https://www.coursera.org/course/interactivepython1"
+        },
+        
+        {
+            "title": "Introduction Computer Science and Programming in Python",
+            "school": "Massachusetts Institute of Technology",
+            "date": 2015,
+            "url": "https://courses.edx.org/courses/MITx/6.00.1x_5/1T2015/info"  
+        },
+        
+         {
+            "title": "Data Processing Using Python",
+            "school": "Nanjing University",
+            "date": 2016, 
+            "url": "https://www.coursera.org/learn/hipython"
+            }
+    ],
+    
+    "display": function() {
             for (var school in education.schools) {
                 var formattedSchool = education.schools[school];
                 

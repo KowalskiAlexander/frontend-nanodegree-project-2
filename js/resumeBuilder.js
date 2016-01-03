@@ -126,9 +126,7 @@ var education = {
                 
                 
                 $("#education").append(HTMLschoolStart);
-                $(".education-entry:last").append(formattedNameAndDegree);
-                $(".education-entry:last").append(formatteddates);
-                $(".education-entry:last").append(formattedLocation);
+                $(".education-entry:last").append(formattedNameAndDegree, formatteddates,formattedLocation);
                 
                 for (var i in formattedSchool.majors) {
                 var formattedMajor = HTMLschoolMajor.replace(ph, formattedSchool.majors[i]);
@@ -151,9 +149,7 @@ var education = {
                     formattedCourseURL= $(formattedCourseURL).attr("href", formattedOnlineCourse.url);
                     formattedTitleAndSchool  = $(formattedTitleAndSchool).attr("href", formattedOnlineCourse.url);
                     // neat!
-                    $(".education-entry:last").append(formattedTitleAndSchool);
-                    $(".education-entry:last").append(formattedCourseDates);
-                    $(".education-entry:last").append(formattedCourseURL);
+                    $(".education-entry:last").append(formattedTitleAndSchool, formattedCourseDates,formattedCourseURL);
                 }
                 
            };
